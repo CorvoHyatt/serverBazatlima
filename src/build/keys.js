@@ -3,8 +3,9 @@ exports.__esModule = true;
 exports["default"] = {
     database: {
         host: 'localhost',
-        user: 'root',
-        password: '',
-        database: 'bazatlima'
+        user: process.env.HOSTUSER || 'root',
+        password: process.env.HOSTPASS || '',
+        database: (process.env.HOSTPREFDB || '') + 'bazatlima',
+        dateStrings: true
     }
 };
