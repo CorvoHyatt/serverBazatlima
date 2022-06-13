@@ -51,14 +51,14 @@ var CalificaciónController = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         id = req.params.id;
-                        return [4 /*yield*/, database_1["default"].query('SELECT Calificación.comentario,Usuarios.nombreUsuario FROM Calificación, Usuarios WHERE Calificación.idUsuarioCalificado = ? AND Calificación.idUsuarioCalificador = Usuarios.idUsuario', [id])];
+                        return [4 /*yield*/, database_1["default"].query('SELECT calificacion.comentario,Usuarios.nombreUsuario FROM calificacion, Usuarios WHERE calificacion.idUsuarioCalificado = ? AND calificacion.idUsuarioCalificador = Usuarios.idUsuario', [id])];
                     case 1:
                         respuesta = _a.sent();
                         if (respuesta.length > 0) {
                             res.json(respuesta[0]);
                             return [2 /*return*/];
                         }
-                        res.status(404).json({ 'mensaje': 'Calificación no encontrado' });
+                        res.status(404).json({ 'mensaje': 'calificacion no encontrado' });
                         return [2 /*return*/];
                 }
             });
@@ -69,11 +69,11 @@ var CalificaciónController = /** @class */ (function () {
             var respuesta, resp;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, database_1["default"].query("SELECT * FROM Calificaci\u00F3n WHERE idUsuarioCalificado = ".concat(req.body.idUsuarioCalificado, " AND idUsuarioCalificador = ").concat(req.body.idUsuarioCalificador))];
+                    case 0: return [4 /*yield*/, database_1["default"].query("SELECT * FROM calificacion WHERE idUsuarioCalificado = ".concat(req.body.idUsuarioCalificado, " AND idUsuarioCalificador = ").concat(req.body.idUsuarioCalificador))];
                     case 1:
                         respuesta = _a.sent();
                         if (!(respuesta.length < 0)) return [3 /*break*/, 3];
-                        return [4 /*yield*/, database_1["default"].query("INSERT INTO Calificación set ?", [req.body])];
+                        return [4 /*yield*/, database_1["default"].query("INSERT INTO calificacion set ?", [req.body])];
                     case 2:
                         resp = _a.sent();
                         res.json(resp);
@@ -93,7 +93,7 @@ var CalificaciónController = /** @class */ (function () {
                     case 0:
                         id = req.params.id;
                         console.log(req.params);
-                        return [4 /*yield*/, database_1["default"].query("UPDATE Calificación set ? WHERE idUsuarioCalificador = ? ", [req.body, id])];
+                        return [4 /*yield*/, database_1["default"].query("UPDATE calificacion set ? WHERE idUsuarioCalificador = ? ", [req.body, id])];
                     case 1:
                         resp = _a.sent();
                         res.json(resp);
@@ -109,7 +109,7 @@ var CalificaciónController = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         id = req.params.id;
-                        return [4 /*yield*/, database_1["default"].query("DELETE FROM Calificaci\u00F3n WHERE idUsuarioCalificador = ".concat(id))];
+                        return [4 /*yield*/, database_1["default"].query("DELETE FROM calificacion WHERE idUsuarioCalificador = ".concat(id))];
                     case 1:
                         resp = _a.sent();
                         res.json(resp);
@@ -125,7 +125,7 @@ var CalificaciónController = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         id = req.params.id;
-                        return [4 /*yield*/, database_1["default"].query("SELECT AVG(estrellas) as estrellasPromedio FROM Calificaci\u00F3n WHERE estrellas > -1 AND idUsuarioCalificado = ".concat(id))];
+                        return [4 /*yield*/, database_1["default"].query("SELECT AVG(estrellas) as estrellasPromedio FROM calificacion WHERE estrellas > -1 AND idUsuarioCalificado = ".concat(id))];
                     case 1:
                         resp = _a.sent();
                         res.json(resp);
